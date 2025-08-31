@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Marrero Brignol - Psicólogo Clínico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Header com gradiente suave para psicólogos */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="300" r="150" fill="url(%23a)"/><circle cx="800" cy="700" r="200" fill="url(%23a)"/><circle cx="400" cy="800" r="100" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .profile-section {
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            background: #e2e8f0;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .hero-credentials {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.4rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.primary {
+            background: #ffffff;
+            color: #667eea;
+        }
+
+        .cta-button.primary:hover {
+            background: #f7fafc;
+        }
+
+        /* Navegação flutuante */
+        .floating-nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 0.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+
+        .floating-nav a {
+            text-decoration: none;
+            color: #4a5568;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Seções principais */
+        .main-content {
+            background: #ffffff;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        /* Fix para evitar sobreposição da seção Sobre Mim */
+        #sobre.section {
+            padding-top: 8rem;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            margin: 0;
+            max-width: 100%;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section:nth-child(even) .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #2d3748;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .section p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* Teoria Cognitiva - Seção especial */
+        .teoria-cognitiva {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .teoria-cognitiva .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .teoria-cognitiva .section-title {
+            color: white;
+        }
+
+        .teoria-cognitiva .section-title::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .teoria-cognitiva p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .teoria-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .teoria-box h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .teoria-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .teoria-box li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .teoria-box li::before {
+            content: '🧠';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Grid de especialidades para psicólogos */
+        .especialidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .especialidade-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .especialidade-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .especialidade-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .especialidade-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .especialidade-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .especialidade-card h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .especialidade-card p {
+            color: #718096;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .saiba-mais {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .saiba-mais:hover {
+            color: #5a67d8;
+            transform: translateX(5px);
+        }
+
+        .saiba-mais::after {
+            content: '→';
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .saiba-mais:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Seção de contato para psicólogos */
+        .contact-section {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            margin: 0;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .contact-section .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .contact-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        .maps-btn {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+        }
+
+        .maps-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 133, 244, 0.5);
+        }
+
+        /* Disclaimer estilizado */
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .disclaimer h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .disclaimer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+            font-size: 1.05rem;
+        }
+
+        /* Destaque para a frase de plano de saúde */
+        .no-planos-saude {
+            color: #ffa500;
+            font-weight: 700;
+        }
+
+        /* Modal moderno para psicólogos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 25px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            margin: 3% auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 3rem;
+            line-height: 1.8;
+        }
+
+        .modal-body h4 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin: 2.5rem 0 1.5rem 0;
+            font-weight: 600;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .modal-body ul {
+            margin: 1.5rem 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .modal-body li {
+            margin-bottom: 1rem;
+            color: #4a5568;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .modal-body li::before {
+            content: '•';
+            color: #667eea;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+        }
+
+        .modal-body p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Footer estilizado */
+        .footer {
+            background: #1a202c;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p.developer-info {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .footer-content p.developer-info a {
+            color: #a0aec0;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-content p.developer-info a:hover {
+            color: #ffffff;
+        }
+
+        .consultation-image {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .consultation-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsividade aprimorada */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .floating-nav {
+                position: static;
+                transform: none;
+                margin: 2rem auto;
+                width: fit-content;
+            }
+
+            .floating-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .especialidades-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .teoria-box {
+                padding: 2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-header {
+                padding: 2rem;
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .especialidade-card {
+                padding: 2rem;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .floating-nav a {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+            }
+        }
+
+        /* Animações suaves */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section,
+        .especialidade-card,
+        .contact-card {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilo personalizado para scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="profile-section">
+                <img src="rafa.webp" alt="Rafael Marrero Brignol - Psicólogo Clínico" class="profile-image">
+            </div>
+            <h1 class="hero-title">Rafael Marrero Brignol</h1>
+            <p class="hero-subtitle">Psicólogo Clínico</p>
+            <p class="hero-credentials">CRP 05/67479 • Graduado desde 2012</p>
+            <div class="hero-tagline">Transformando vidas através da Terapia Cognitivo-Comportamental</div>
+            <div class="hero-cta">
+                <a href="#contato" class="cta-button primary">Agendar Consulta</a>
+                <a href="#sobre" class="cta-button">Conheça Meu Trabalho</a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#abordagem">Abordagem</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section id="sobre" class="section">
+            <h2 class="section-title">Sobre Mim</h2>
+            <p>Graduado em Psicologia desde 2012, possuo ampla experiência na saúde pública e em clínica privada,
+                especializando-me no atendimento de <span class="highlight-text">adolescentes e adultos</span>. Minha
+                prática
+                clínica é fundamentada na <span class="highlight-text">Terapia Cognitivo-Comportamental (TCC)</span>,
+                uma
+                abordagem científica e eficaz para o tratamento de diversos transtornos psicológicos.</p>
+
+            <p>Com mais de uma década de experiência, desenvolvi expertise no tratamento de <strong>transtornos de
+                    ansiedade,
+                    depressão, problemas de autoestima, processo de luto e gestão de estresse</strong>. Durante minha
+                trajetória
+                profissional, atuei na rede pública de saúde conduzindo grupos terapêuticos de 2017 a 2020,
+                proporcionando
+                suporte psicológico coletivo e individual.</p>
+
+            <p>Minha formação inclui <span class="highlight-text">Mestrado em Educação pela UFPEL</span> e <span
+                    class="highlight-text">Especialização em Terapia Cognitivo-Comportamental pelo IESLA</span>,
+                garantindo uma
+                base sólida tanto teórica quanto prática para oferecer o melhor cuidado aos meus pacientes.</p>
+
+            <p>Atualmente, dedico-me exclusivamente ao <strong>atendimento clínico particular de adolescentes e
+                    adultos</strong>, oferecendo um espaço seguro e acolhedor para o desenvolvimento pessoal e
+                superação de
+                dificuldades emocionais através de técnicas baseadas em evidência científica.</p>
+        </section>
+
+        <section id="abordagem" class="teoria-cognitiva">
+            <div class="content-wrapper">
+                <h2 class="section-title">Teoria Cognitiva na Prática Clínica</h2>
+                <p>A <span style="color: white; font-weight: 600;">Teoria Cognitiva</span>, desenvolvida por Aaron Beck,
+                    fundamenta minha prática clínica e representa uma das abordagens mais eficazes e cientificamente
+                    validadas da
+                    psicologia contemporânea. Esta teoria se baseia no princípio de que nossos <strong>pensamentos,
+                        emoções e
+                        comportamentos</strong> estão intimamente interconectados.</p>
+
+                <div class="teoria-box">
+                    <h3>Principais Técnicas Cognitivas:</h3>
+                    <ul>
+                        <li><strong>Registro de Pensamentos Disfuncionais:</strong> Identificação e análise dos
+                            pensamentos
+                            automáticos</li>
+                        <li><strong>Reestruturação Cognitiva:</strong> Questionamento socrático e desenvolvimento de
+                            pensamentos
+                            alternativos</li>
+                        <li><strong>Experimentos Comportamentais:</strong> Testagem de crenças através de experiências
+                            práticas</li>
+                        <li><strong>Psicoeducação:</strong> Compreensão da relação entre pensamentos, sentimentos e
+                            comportamentos
+                        </li>
+                    </ul>
+                </div>
+
+                <p>Esta abordagem estruturada e colaborativa permite que o paciente desenvolva <span
+                        style="color: white; font-weight: 600;">habilidades de automonitoramento e
+                        autorregulação</span>,
+                    tornando-se seu próprio terapeuta ao longo do processo. O objetivo é promover mudanças duradouras
+                    que se
+                    mantenham mesmo após o término do tratamento.</p>
+            </div>
+        </section>
+
+        <section id="especialidades" class="section">
+            <h2 class="section-title">Áreas de Especialização</h2>
+            <p>Atendo <span class="highlight-text">adolescentes e adultos</span> utilizando técnicas da Terapia
+                Cognitivo-Comportamental para diversos transtornos e dificuldades emocionais. Cada tratamento é
+                personalizado e
+                baseado em evidências científicas.</p>
+
+            <div class="especialidades-grid">
+                <div class="especialidade-card" onclick="openModal('tcc-modal')">
+                    <div class="card-icon">🧠</div>
+                    <h3>Terapia Cognitivo-Comportamental</h3>
+                    <p>Abordagem baseada na teoria cognitiva de Aaron Beck, focando na modificação de pensamentos
+                        disfuncionais e
+                        padrões comportamentais inadequados.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+
+                <div class="especialidade-card" onclick="openModal('ansiedade-modal')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">😰
+                    </div>
+                    <h3>Transtornos de Ansiedade</h3>
+                    <p>Tratamento especializado para TAG, transtorno de pânico, fobias específicas e ansiedade social,
+                        utilizando
+                        técnicas cognitivo-comportamentais.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+
+                <div class="especialidade-card" onclick="openModal('depressao-modal')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">😔
+                    </div>
+                    <h3>Depressão e Transtornos do Humor</h3>
+                    <p>Abordagem cognitiva para episódios depressivos, distimia e oscilações de humor, com foco na
+                        reestruturação
+                        de pensamentos negativos.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+
+                <div class="especialidade-card" onclick="openModal('autoestima-modal')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">💪
+                    </div>
+                    <h3>Autoestima e Autoconfiança</h3>
+                    <p>Desenvolvimento de uma autoimagem positiva e realista através da identificação e modificação de
+                        crenças
+                        limitantes sobre si mesmo.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+
+                <div class="especialidade-card" onclick="openModal('estresse-modal')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">😤
+                    </div>
+                    <h3>Gestão de Estresse</h3>
+                    <p>Técnicas cognitivas e comportamentais para identificar e modificar padrões de resposta ao
+                        estresse,
+                        desenvolvendo estratégias de enfrentamento.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+
+                <div class="especialidade-card" onclick="openModal('luto-modal')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);">🕊️
+                    </div>
+                    <h3>Processo de Luto</h3>
+                    <p>Acompanhamento psicológico durante o processo de luto, auxiliando na elaboração da perda e
+                        adaptação à nova
+                        realidade.</p>
+                    <span class="saiba-mais">Saiba mais</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <div class="content-wrapper">
+                <h2 class="section-title" style="color: white;">Informações para Contato</h2>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3>Agendamento</h3>
+                        <p>Entre em contato via WhatsApp para agendar sua consulta. Atendimento personalizado para
+                            adolescentes e
+                            adultos.</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">🏥</div>
+                        <h3>Modalidades</h3>
+                        <p>Consultas presenciais e online. Flexibilidade para atender suas necessidades de horário e
+                            localização.
+                        </p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3>Localização</h3>
+                        <p>Rua Barata Ribeiro, 774<br>Salas 409 e 410<br>Copacabana - Rio de Janeiro</p>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="https://wa.me/555399209903?text=Olá! Gostaria de agendar uma consulta com o psicólogo Rafael Marrero Brignol."
+                        class="whatsapp-btn" target="_blank">
+                        📱 Agendar via WhatsApp
+                    </a>
+                    <a href="https://maps.google.com/?q=Rua+Barata+Ribeiro,+774,+Copacabana,+Rio+de+Janeiro" class="maps-btn" target="_blank">
+                        🗺️ Ver no Google Maps
+                    </a>
+                </div>
+
+                <div class="disclaimer">
+                    <h4>⚠️ Informações Importantes</h4>
+                    <p><span class="no-planos-saude">Não atendemos por plano de saúde.</span> Consultas particulares com
+                        valores acessíveis.
+                        Modalidades: presencial e online. Entre em contato para mais informações sobre valores e
+                        disponibilidade.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="paciente.webp" alt="Pessoa sofrendo de depressão em consulta psicológica"
+                class="consultation-image">
+            <p style="color: #a0aec0; font-size: 1rem;">© 2024 Rafael Marrero Brignol - Psicólogo Clínico CRP 05/67479.
+                Todos
+                os direitos reservados.</p>
+            <p class="developer-info">Desenvolvido por <a href="https://www.linkedin.com/in/lucas-oliveira-de-borba/"
+                    target="_blank">Lucas Borba</a></p>
+        </div>
+    </footer>
+
+    <div id="tcc-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('tcc-modal')">×</button>
+                <h3>Terapia Cognitivo-Comportamental (TCC)</h3>
+            </div>
+            <div class="modal-body">
+                <p>A Terapia Cognitivo-Comportamental é uma abordagem psicoterapêutica estruturada, focada no presente e
+                    baseada
+                    em evidências científicas. Fundamentada na teoria cognitiva de Aaron Beck, esta modalidade
+                    terapêutica parte
+                    do princípio de que nossos pensamentos, emoções e comportamentos estão interconectados.</p>
+
+                <h4>Princípios Fundamentais da Teoria Cognitiva:</h4>
+                <ul>
+                    <li><strong>Pensamentos Automáticos:</strong> Identificação de pensamentos que surgem
+                        espontaneamente e
+                        influenciam nosso estado emocional</li>
+                    <li><strong>Crenças Centrais:</strong> Trabalho com crenças profundas sobre si mesmo, o mundo e o
+                        futuro
+                        (Tríade Cognitiva)</li>
+                    <li><strong>Esquemas Cognitivos:</strong> Padrões mentais que organizam nossa percepção e
+                        interpretação da
+                        realidade</li>
+                    <li><strong>Distorções Cognitivas:</strong> Modificação de padrões de pensamento inadequados como
+                        catastrofização, pensamento dicotômico e personalização</li>
+                </ul>
+
+                <h4>Técnicas Utilizadas:</h4>
+                <ul>
+                    <li>Registro de Pensamentos Disfuncionais (RPD)</li>
+                    <li>Questionamento Socrático</li>
+                    <li>Experimentos Comportamentais</li>
+                    <li>Reestruturação Cognitiva</li>
+                    <li>Técnicas de Exposição Gradual</li>
+                    <li>Psicoeducação sobre transtornos mentais</li>
+                </ul>
+
+                <p><strong>A TCC é especialmente eficaz no tratamento de:</strong> Transtornos de ansiedade, depressão,
+                    transtornos obsessivo-compulsivos, fobias, transtornos alimentares, problemas de autoestima e
+                    diversos outros
+                    transtornos psicológicos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="ansiedade-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('ansiedade-modal')">×</button>
+                <h3>Transtornos de Ansiedade</h3>
+            </div>
+            <div class="modal-body">
+                <p>Os transtornos de ansiedade são condições caracterizadas por medo e ansiedade excessivos que
+                    interferem
+                    significativamente no funcionamento diário. Na perspectiva cognitivo-comportamental, trabalhamos
+                    com os
+                    padrões de pensamento e comportamentos que mantêm e intensificam a ansiedade.</p>
+
+                <h4>Tipos de Transtornos de Ansiedade Tratados:</h4>
+                <ul>
+                    <li><strong>Transtorno de Ansiedade Generalizada (TAG):</strong> Preocupação crônica e excessiva
+                        sobre
+                        eventos ou atividades cotidianas.</li>
+                    <li><strong>Transtorno de Pânico:</strong> Caracterizado por ataques de pânico recorrentes e
+                        inesperados.
+                    </li>
+                    <li><strong>Fobias Específicas:</strong> Medo intenso e irracional de um objeto ou situação
+                        específica.
+                    </li>
+                    <li><strong>Ansiedade Social:</strong> Medo de ser julgado ou avaliado negativamente em situações
+                        sociais.
+                    </li>
+                </ul>
+                <p>O tratamento foca na identificação dos pensamentos catastróficos, na reestruturação cognitiva e no
+                    desenvolvimento de habilidades de enfrentamento, como técnicas de relaxamento e de exposição gradual
+                    para
+                    diminuir o medo e a evitação.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="depressao-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('depressao-modal')">×</button>
+                <h3>Depressão e Transtornos do Humor</h3>
+            </div>
+            <div class="modal-body">
+                <p>A depressão é uma condição de saúde mental séria que afeta o humor, o pensamento e o comportamento.
+                    A TCC
+                    oferece uma estrutura eficaz para tratar a depressão, ajudando o paciente a reconhecer e modificar
+                    os
+                    padrões de pensamento negativos que alimentam a tristeza e a falta de energia.</p>
+
+                <h4>Sintomas de Depressão abordados:</h4>
+                <ul>
+                    <li>Sentimentos persistentes de tristeza e vazio</li>
+                    <li>Perda de interesse em atividades antes prazerosas</li>
+                    <li>Fadiga e falta de energia</li>
+                    <li>Dificuldade de concentração e tomada de decisões</li>
+                    <li>Sentimentos de culpa ou inutilidade</li>
+                    <li>Alterações no sono e no apetite</li>
+                </ul>
+                <p>O tratamento envolve técnicas de reestruturação cognitiva para desafiar crenças negativas,
+                    planejamento de
+                    atividades para aumentar o envolvimento e o prazer (ativação comportamental) e o desenvolvimento de
+                    estratégias de enfrentamento para lidar com os desafios da vida.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="autoestima-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('autoestima-modal')">×</button>
+                <h3>Autoestima e Autoconfiança</h3>
+            </div>
+            <div class="modal-body">
+                <p>A autoestima e a autoconfiança são cruciais para o bem-estar mental. Uma baixa autoestima pode
+                    contribuir
+                    para ansiedade, depressão e dificuldades nos relacionamentos. O trabalho terapêutico visa
+                    construir uma
+                    autoimagem mais positiva e realista.</p>
+
+                <h4>Como a TCC ajuda a melhorar a Autoestima:</h4>
+                <ul>
+                    <li>Identificação e modificação de crenças limitantes sobre si mesmo</li>
+                    <li>Desenvolvimento de uma narrativa mais saudável e compassiva sobre sua história de vida</li>
+                    <li>Estabelecimento de metas realistas e alcançáveis para construir autoconfiança</li>
+                    <li>Aprendizagem de habilidades de comunicação e assertividade</li>
+                    <li>Reconhecimento de qualidades e conquistas pessoais</li>
+                </ul>
+                <p>O processo ajuda a fortalecer o senso de valor próprio, permitindo que você enfrente os desafios com
+                    mais
+                    segurança e desenvolva relacionamentos mais saudáveis e significativos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="estresse-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('estresse-modal')">×</button>
+                <h3>Gestão de Estresse</h3>
+            </div>
+            <div class="modal-body">
+                <p>O estresse crônico pode ter sérios impactos na saúde física e mental. Na terapia, você aprenderá a
+                    identificar os gatilhos do estresse, a modificar suas respostas a eles e a desenvolver estratégias
+                    eficazes para gerenciar a pressão do dia a dia.</p>
+
+                <h4>Técnicas de Gestão de Estresse:</h4>
+                <ul>
+                    <li>Técnicas de respiração e relaxamento</li>
+                    <li>Planejamento e organização de tarefas</li>
+                    <li>Reestruturação de pensamentos estressores</li>
+                    <li>Desenvolvimento de resiliência e habilidades de enfrentamento</li>
+                    <li>Definição de limites pessoais e profissionais</li>
+                </ul>
+                <p>Este trabalho terapêutico não apenas alivia o estresse atual, mas também equipa você com ferramentas
+                    para lidar com futuros desafios de forma mais calma e controlada, promovendo um bem-estar duradouro.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="luto-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('luto-modal')">×</button>
+                <h3>Processo de Luto</h3>
+            </div>
+            <div class="modal-body">
+                <p>O luto é uma resposta natural e complexa à perda de alguém ou algo significativo. O acompanhamento
+                    psicológico oferece um espaço seguro e acolhedor para processar as emoções e encontrar um novo
+                    sentido
+                    após a perda.</p>
+
+                <h4>Etapas do Luto (segundo Elisabeth Kübler-Ross):</h4>
+                <ul>
+                    <li><strong>Negação:</strong> Recusa em aceitar a realidade da perda.</li>
+                    <li><strong>Raiva:</strong> Sentimento de raiva e injustiça, muitas vezes direcionado a si mesmo,
+                        aos
+                        outros ou ao destino.</li>
+                    <li><strong>Barganha:</strong> Negociação com uma força maior para reverter a perda.</li>
+                    <li><strong>Depressão:</strong> Sentimentos de tristeza, desesperança e isolamento profundo.</li>
+                    <li><strong>Aceitação:</strong> Aceitação da realidade da perda e busca por um novo começo.</li>
+                </ul>
+                <p>Na TCC, o foco está em validar as emoções, ajudar a pessoa a se adaptar à nova realidade, a
+                    reestruturar a
+                    vida sem a presença da pessoa ou situação perdida e a reintegrar a experiência de forma saudável.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10); // Pequeno delay para a transição funcionar
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400); // Espera a transição terminar antes de esconder
+        }
+
+        // Fechar o modal ao clicar fora dele
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 400);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
